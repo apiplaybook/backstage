@@ -1,10 +1,24 @@
 app:
   baseUrl: https://backstage-apiplaybook-a22b57a14ff9.herokuapp.com
 
+
 backend:
   baseUrl: https://backstage-apiplaybook-a22b57a14ff9.herokuapp.com
   listen:
     port: ${PORT}
+
+integrations:
+  github:
+    - host: github.com
+      token: ${GHE_TOKEN}
+
+auth: 
+  environment: production
+  providers:
+    github:
+      production:
+        clientId: ${AUTH_GITHUB_CLIENT_ID}
+        clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
 
 catalog:
   locations: []
