@@ -36,6 +36,9 @@ import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/
 
 import { githubAuthApiRef } from '@backstage/core-plugin-api';
 import { SignInPage } from '@backstage/core-components';
+import { CssBaseline, ThemeProvider } from '@material-ui/core';
+import { myTheme } from './styles';
+import LightIcon from '@material-ui/icons/WbSunny';
 
 const app = createApp({
   apis,
@@ -70,6 +73,19 @@ const app = createApp({
       />
     ),
   },
+  themes: [
+    {
+      id: 'my-theme',
+      title: 'My Custom Theme',
+      variant: 'light',
+      icon: <LightIcon />,
+      Provider: ({ children }) => (
+        <ThemeProvider theme={myTheme}>
+          <CssBaseline>{children}</CssBaseline>
+        </ThemeProvider>
+      ),
+    },
+  ],
 });
 
 const routes = (
