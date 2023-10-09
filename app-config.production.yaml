@@ -21,4 +21,5 @@ auth:
         clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
 
 catalog:
+  readonly: true
   locations: []
