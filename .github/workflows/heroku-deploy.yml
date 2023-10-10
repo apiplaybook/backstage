@@ -15,8 +15,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-
-### ⬇ IMPORTANT PART ⬇ ###
+      - name: Set Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      
+      - name: Run install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install
+      
+      - name: Build production bundle
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: build:backend --config ../../app-config.yaml
 
       - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
         uses: gonuit/heroku-docker-deploy@v1.3.3 # GitHub action name (leave it as it is).
